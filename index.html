@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vasundhra Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  color:white;
+  display:flex;
+  min-height:100vh;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,200,255,0.4), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1), transparent 40%),
+    linear-gradient(135deg,#000814,#003566,#000814);
+}
+
+/* EDGE GLOW */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  border:3px solid transparent;
+  border-image: linear-gradient(90deg,#ffffff,#00eaff,#ff0000,#ffffff) 1;
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.6),
+    0 0 40px rgba(0,200,255,0.7),
+    0 0 60px rgba(255,0,0,0.5);
+  pointer-events:none;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:30%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center; /* 🔥 FIX */
+  background: rgba(0,0,20,0.6);
+  backdrop-filter: blur(10px);
+  padding:20px;
+}
+
+.name{
+  font-family:'Montserrat';
+  font-size:2rem;
+  background: linear-gradient(90deg,#ffffff,#00eaff,#ff0000);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.tag{
+  margin-top:8px;
+  color:#ccc;
+}
+
+/* IMAGE */
+.avatar{
+  width:320px;
+  height:420px;
+  object-fit:cover;
+  margin-top:20px;
+  border-radius:15px;
+  border:2px solid white;
+  box-shadow:0 0 30px rgba(0,200,255,0.8), 0 0 20px white;
+}
+
+/* MAIN */
+.main{
+  width:70%;
+  padding:60px 50px;
+}
+
+.section{
+  margin-top:35px;
+}
+
+.section h2{
+  font-family:'Orbitron';
+  margin-bottom:10px;
+  border-left:5px solid white;
+  padding-left:10px;
+}
+
+.card{
+  background: rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 20px rgba(0,200,255,0.7), 0 0 10px white;
+}
+
+p{
+  color:#eee;
+  line-height:1.6;
+}
+
+/* PARTICLES */
+#bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+  body{flex-direction:column;}
+  .sidebar{width:100%;}
+  .main{width:100%; padding:20px;}
+  .avatar{width:220px;height:300px;}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="sidebar">
+  <h1 class="name">VASUNDHRA KRISHNAR K.M</h1>
+  <p class="tag">Student | Mathematics enthusiast | Problem Solver</p>
+  <img src="avatar.png" class="avatar">
+</div>
+
+<div class="main">
+
+  <div class="section">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>I am a student with a strong academic focus on mathematics and analytical problem solving. I have consistently participated in national and international level competitive examinations, gaining deep conceptual understanding and experience in high-level problem solving.
+
+I have appeared for exams such as RMO, IOQM, NSEJS, NSEP, NSEC, MAT, PAT, and CHAT, which have strengthened my logical reasoning and scientific thinking. Alongside academics, I maintain a disciplined lifestyle and actively engage in strategic activities.
+
+I enjoy playing chess and carrom, which improve my focus and decision-making skills. I have also trained in Karate and Taekwondo, earning a green belt, which reflects my dedication and consistency.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Skills</h2>
+    <div class="card">
+      <p>
+• Strong Mathematical Thinking and Problem Solving<br>
+• Logical Reasoning and Analytical Skills<br>
+• Competitive Exam Experience (Olympiad Level)<br>
+• Strategic Thinking (Chess, Carrom)<br>
+• Discipline and Focus (Martial Arts Training)
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Achievements</h2>
+    <div class="card">
+      <p>
+• Secured 93.44 Percentile in JEE Mains 2026<br><br>
+
+• SOF Olympiads – Top ranks in multiple years<br><br>
+
+• INTSO – KAT:<br>
+– Gold Medalist (Multiple Times)<br>
+– Silver Medals<br>
+– ₹14,000–₹15,000 cash prizes<br>
+– Won smartwatch & Lenovo tablet<br><br>
+
+• Appeared in:<br>
+RMO, IOQM, NSEJS, NSEP, NSEC, MAT, PAT, CHAT
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+let particles=[];
+for(let i=0;i<60;i++){
+  particles.push({
+    x:Math.random()*window.innerWidth,
+    y:Math.random()*window.innerHeight,
+    r:Math.random()*2,
+    dx:(Math.random()-0.5)*0.5,
+    dy:(Math.random()-0.5)*0.5
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="rgba(0,220,255,0.7)";
+
+  particles.forEach(p=>{
+    p.x+=p.dx;
+    p.y+=p.dy;
+
+    if(p.x<0||p.x>canvas.width) p.dx*=-1;
+    if(p.y<0||p.y>canvas.height) p.dy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
